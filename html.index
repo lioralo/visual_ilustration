@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+    <title>Confidence Interval Simulation</title>
+    <style>
+      head {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+      }
+      body {
+        background-color: #f2f2f2;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 15px;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      h1, h2 {
+        color: #308DDE;
+      }
+      
+      #speedSlider {
+        width: 100%;
+      }
+      
+      .button-group {
+        text-align: center;
+        size: 50px;
+      }
+      
+      #myPlot, #myPlot2 {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Confidence Interval Simulation</h1>
+    <p>This simulation demonstrates changes in confidence interval based on changes in sample size and the confidence level.<br>
+    First the user should choose the size of the sample by dragging the scale bar.<br>
+    Next, the user indicate the confidence level by clicking the adjacent button.
+    <br><br>
+    by pressing "Calculate" button the program produce all the population distributions with the calculated standard error of the mean that can be included inside the confidence interval.<br>
+      On the lower graph the confidence interval is displayed in order to compare changes in the parameters between simulations</p>
+    <h3>Choose Sample Size:</h3>
+    <input type="range" id="speedSlider" min="10" max="1000" step="1" value="30" oninput="showSpeed();" onchange="showSpeed();">
+    <br>
+    Sample Size = <span id="speedReadout">30</span>
+    <br>
+    <h3>Choose Confidence Level:</h3>
+    <div class="button-group">
+      <form>
+        <input type="radio" name="confLevel" value=1.282 id="80" checked>
+        <label for="80">80%</label>
+        <input type="radio" name="confLevel" value=1.440 id="85">
+        <label for="85">85%</label>
+        <input type="radio" name="confLevel" value=1.645 id="90">
+        <label for="90">90%</label>
+        <input type="radio" name="confLevel" value=1.96 id="95">
+        <label for="95">95%</label>
+        <input type="radio" name="confLevel" value=2.57 id="99">
+        <label for="99">99%</label>
+      </form>
+    </div>
+    <button id="button" onclick="updatePlot()">Calculate</button>
+    <div id="myPlot"></div>
+    <div id="myPlot2"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
